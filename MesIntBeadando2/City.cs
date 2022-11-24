@@ -32,7 +32,7 @@ namespace MesIntBeadando
         }
 
         /// <summary>
-        /// This method intializes all the cities
+        /// This method initializes all the cities
         /// </summary>
         /// <param name="random"></param>
         /// <param name="M">The number of the cities</param>

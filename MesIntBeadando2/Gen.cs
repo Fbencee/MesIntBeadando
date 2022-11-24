@@ -38,6 +38,9 @@ namespace MesIntBeadando
             CalculateBestIndividual();
         }
 
+        /// <summary>
+        /// This method initializes all the individuals in the generation
+        /// </summary>
         public void InitIndividuals()
         {
             Individuals = new();
@@ -59,6 +62,9 @@ namespace MesIntBeadando
             }
         }
 
+        /// <summary>
+        /// This method calculates the best individual in the generation
+        /// </summary>
         public void CalculateBestIndividual()
         {
             foreach (Individual individual in this.Individuals)
@@ -70,6 +76,9 @@ namespace MesIntBeadando
             }
         }
 
+        /// <summary>
+        /// This method mutate all the individuals
+        /// </summary>
         public void MutateAll()
         {
             foreach (Individual individual in this.PreviousGen.Individuals)
@@ -78,6 +87,10 @@ namespace MesIntBeadando
             }
         }
 
+        /// <summary>
+        /// This method generates a new individual list for the new generation
+        /// </summary>
+        /// <returns>A new sequence</returns>
         public List<Individual> GenerateNewIndividuals()
         {
             List<Individual> newIndividuals = new();
@@ -96,10 +109,14 @@ namespace MesIntBeadando
             return newIndividuals;
         }
 
+        /// <summary>
+        /// This method creates a mating pool
+        /// </summary>
+        /// <returns>Mating pool</returns>
         public List<Individual> CreateMatingPool()
         {
             List<Individual> matingPool = new();
-            long sum = this.PreviousGen.Individuals.Select(f => f.Fitness).Sum();
+            long sum = this.PreviousGen.Individuals.Select(f => f.Fitness).Sum();//the sum of fitnesses
             foreach (Individual individual in this.PreviousGen.Individuals)
             {
                 double ratio = (double)individual.Fitness / sum;

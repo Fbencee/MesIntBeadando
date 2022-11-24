@@ -9,11 +9,11 @@ namespace MesIntBeadando
     {
         static void Main(string[] args)
         {
-            int G = 100;//gen száma 
-            int N = 100;//gen mérete 
-            int M = 500;//városok száma 10 20  50 100 200 500
-            int K = 10;//futárok száma 1 2 4 5 10 20
-            double mutationRate = 0.1;
+            int G = 100;//number of gens 
+            int N = 100;//size of gen
+            int M = 500;//number of cities (10 20  50 100 200 500)
+            int K = 10;//number of  (1 2 4 5 10 20)
+            double mutationRate = 0.1;//
 
             Random random = new();
             City.Init(random, M, 1, 101);
