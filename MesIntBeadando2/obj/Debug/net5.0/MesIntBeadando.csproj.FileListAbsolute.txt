@@ -1,0 +1,16 @@
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\bin\Debug\net5.0\MesIntBeadando.exe
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\bin\Debug\net5.0\MesIntBeadando.deps.json
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\bin\Debug\net5.0\MesIntBeadando.runtimeconfig.json
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\bin\Debug\net5.0\MesIntBeadando.runtimeconfig.dev.json
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\bin\Debug\net5.0\MesIntBeadando.dll
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\bin\Debug\net5.0\ref\MesIntBeadando.dll
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\bin\Debug\net5.0\MesIntBeadando.pdb
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.csprojAssemblyReference.cache
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.AssemblyInfoInputs.cache
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.AssemblyInfo.cs
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.csproj.CoreCompileInputs.cache
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.dll
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\ref\MesIntBeadando.dll
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.pdb
+C:\Users\FIB1MC\source\repos\MesIntBeadando2\MesIntBeadando2\obj\Debug\net5.0\MesIntBeadando.genruntimeconfig.cache
