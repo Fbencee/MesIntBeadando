@@ -23,14 +23,16 @@ namespace MesIntBeadando
             Gen newGen=new(gen);
             Individual bestOne = new(gen.BestIndividual);
 
-            for (int i = 0; i < G-1; i++)
+            for (int i = 1; i < G; i++)
             {
-                if (i != 0)
+                if (i != 1)
                 {
                     prevGen = newGen;
                 }
+
                 newGen = new(prevGen);
-                Console.WriteLine($"Current Gen Best Fitness:{newGen.BestIndividual.Fitness}");
+                Console.WriteLine($"Gen{i} Current Gen Best Fitness:{newGen.BestIndividual.Fitness}");
+
                 if (bestOne.Fitness > newGen.BestIndividual.Fitness)
                 {
                     bestOne = newGen.BestIndividual;

@@ -16,25 +16,27 @@ namespace MesIntBeadando
         public Random Rnd { get; set; }
         public Individual BestIndividual { get; set; }
 
-        public Gen(double mutationRate, int n, int k, Random rnd)
+        private Gen(double mutationRate, int n, int k)
         {
+            this.MutationRate = mutationRate;
             this.N = n;
             this.K = k;
+        }
+
+        public Gen(double mutationRate, int n, int k, Random rnd)
+            : this(mutationRate, n, k)
+        {
             this.Rnd = rnd;
-            this.MutationRate = mutationRate;
             InitIndividuals();
             CalculateBestIndividual();
         }
 
         public Gen(Gen gen)
+            : this(gen.MutationRate, gen.N, gen.K)
         {
-
-            this.N = gen.N;
-            this.K = gen.K;
             this.Rnd = gen.Rnd;
-            this.MutationRate = gen.MutationRate;
             this.PreviousGen = gen;
-            this.Individuals = GenerateNewIndividuals();
+            GenerateNewIndividuals();
             CalculateBestIndividual();
         }
 
@@ -81,7 +83,7 @@ namespace MesIntBeadando
         /// </summary>
         public void MutateAll()
         {
-            foreach (Individual individual in this.PreviousGen.Individuals)
+            foreach (Individual individual in this.Individuals)
             {
                 individual.Mutation(Rnd, MutationRate);
             }
@@ -91,22 +93,22 @@ namespace MesIntBeadando
         /// This method generates a new individual list for the new generation
         /// </summary>
         /// <returns>A new sequence</returns>
-        public List<Individual> GenerateNewIndividuals()
+        public void GenerateNewIndividuals()
         {
+            this.Individuals = this.PreviousGen.Individuals.ToList();
             List<Individual> newIndividuals = new();
             MutateAll();
             List<Individual> matingPool = CreateMatingPool();
 
             for (int i = 0; i < N; i++)
             {
-                
                 int rand1 = Rnd.Next(0, matingPool.Count);
                 int rand2 = Rnd.Next(0, matingPool.Count);
                 Individual newInd = Individual.CrossOver(matingPool[rand1], matingPool[rand2], Rnd);
                 newIndividuals.Add(newInd);
             }
 
-            return newIndividuals;
+            this.Individuals = newIndividuals;
         }
 
         /// <summary>
@@ -116,8 +118,8 @@ namespace MesIntBeadando
         public List<Individual> CreateMatingPool()
         {
             List<Individual> matingPool = new();
-            long sum = this.PreviousGen.Individuals.Select(f => f.Fitness).Sum();//the sum of fitnesses
-            foreach (Individual individual in this.PreviousGen.Individuals)
+            long sum = this.Individuals.Select(f => f.Fitness).Sum();//the sum of fitnesses
+            foreach (Individual individual in this.Individuals)
             {
                 double ratio = (double)individual.Fitness / sum;
                 int amount = (int)(1000 * (1 - ratio));
@@ -127,7 +129,7 @@ namespace MesIntBeadando
                     matingPool.Add(individual);
                 }
             }
-            
+
             return matingPool;
         }
     }
