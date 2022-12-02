@@ -10,10 +10,12 @@ namespace MesIntBeadando
     {
         public List<City> Sequence { get; set; }
         public long Fitness { get; set; }
+        public Problem Vrp { get; set; }
 
-        public Individual(List<City> sequence)
+        public Individual(List<City> sequence, Problem vrp)
         {
             this.Sequence = sequence;
+            Vrp = vrp;
             CalculateFitness();
         }
 
@@ -21,6 +23,7 @@ namespace MesIntBeadando
         {
             this.Sequence = individual.Sequence;
             this.Fitness = individual.Fitness;
+            this.Vrp = individual.Vrp;
         }
 
         /// <summary>
@@ -28,7 +31,7 @@ namespace MesIntBeadando
         /// </summary>
         public void CalculateFitness()
         {
-            this.Fitness = City.Depot.CalculateDistance(Sequence[0]) + City.Depot.CalculateDistance(Sequence[^1]);
+            this.Fitness = Vrp.Depot.CalculateDistance(Sequence[0]) + Vrp.Depot.CalculateDistance(Sequence[^1]);
 
             for (int i = 0; i < Sequence.Count - 1; i++)
             {
@@ -78,7 +81,7 @@ namespace MesIntBeadando
 
             for (int i = 0; i < individual2.Sequence.Count; i++)
             {
-                if (newSequence.Contains(individual2.Sequence[i]) && individual2.Sequence[i] != City.Depot)
+                if (newSequence.Contains(individual2.Sequence[i]) && individual2.Sequence[i] != individual2.Vrp.Depot)
                 {
                     continue;
                 }
@@ -89,7 +92,7 @@ namespace MesIntBeadando
 
             if (diff != 0)
             {
-                List<int> depotPositions = FindDepots(newSequence);
+                List<int> depotPositions = FindDepots(newSequence, individual2.Vrp);
                 depotPositions = depotPositions.OrderBy(p => random.Next(0, depotPositions.Count)).Take(diff).OrderByDescending(p => p).ToList();
 
                 foreach (int pos in depotPositions)
@@ -98,7 +101,7 @@ namespace MesIntBeadando
                 }
             }
 
-            return new(newSequence);
+            return new(newSequence,individual2.Vrp);
         }
 
         /// <summary>
@@ -106,13 +109,13 @@ namespace MesIntBeadando
         /// </summary>
         /// <param name="sequence">The list you want to search in</param>
         /// <returns>A list of depot postition indexes</returns>
-        public static List<int> FindDepots(List<City> sequence)
+        public static List<int> FindDepots(List<City> sequence, Problem vrp)
         {
             List<int> depotPos = new();
 
             for (int i = 0; i < sequence.Count; i++)
             {
-                if (sequence[i] == City.Depot)
+                if (sequence[i] == vrp.Depot)
                 {
                     depotPos.Add(i);
                 }
@@ -140,24 +143,6 @@ namespace MesIntBeadando
             }
 
             return p1;
-        }
-
-        /// <summary>
-        /// This method checks wether the list contains all the cities or not
-        /// </summary>
-        /// <param name="sequence">The list we want to check</param>
-        /// <returns>bool</returns>
-        public static bool IsContainsAllTheCities(List<City> sequence)
-        {
-            foreach (City city in City.All)
-            {
-                if (!sequence.Contains(city))
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }
